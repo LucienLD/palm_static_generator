@@ -1,0 +1,37 @@
+# PALM static driver — configuration file
+#
+# This template is loaded by the GUI on startup and may also be passed to
+# writer.py for batch / scripting use.  `reference_file` MUST point to a valid
+# PALM 3D output NetCDF before a static driver can be generated: the vertical
+# grid (zu_3d / zw_3d) and the domain dimensions are read from it.
+
+reference_file: ""        # path to PALM 3D output NetCDF (mandatory)
+
+domain:
+  nx: 39          # read from reference file; overridable
+  ny: 39
+  dx: 2.0         # [m]
+  dy: 2.0         # [m]
+
+output:
+  filename: "my_case_static"
+
+global_attributes:
+  title: "My PALM test case"
+  author: "Your Name"
+  institution: "Your institution"
+  origin_lat: 48.8534
+  origin_lon: 2.3488
+  origin_x: 452000.0
+  origin_y: 5411600.0
+  origin_z: 35.0
+  origin_time: "2023-07-15 06:00:00 +00"
+  rotation_angle: 0.0
+
+defaults:
+  background_type: "pavement"   # "pavement" or "bare soil"
+  pavement_type: 2              # 2 = concrete
+  soil_type: 2                  # 2 = medium (loamy sand)
+  soil_temperature: [300.0, 295.0, 290.0, 290.0, 290.0, 290.0, 290.0, 290.0]
+  soil_moisture: 0.05           # m3/m3
+  deep_soil_temperature: 290.0  # K
